@@ -1,0 +1,53 @@
+{% extends 'basic.html' %}
+
+{% block title %} Job Portal {% endblock %}
+{% block home %} active {% endblock %}
+{% block css %}
+<style>
+    /* Additional CSS for this specific page */
+    .jumbotron {
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .contact-info {
+        background-color: #D0D3D4;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .contact-info p {
+        font-size: 18px;
+        color: #17202A;
+    }
+</style>
+{% endblock %}
+{% block body %}
+{% load static %}
+
+<div class="container mt-4">
+    <!-- Jumbotron with Image -->
+    <div class="jumbotron">
+        <h1>Welcome to the Job Portal</h1>
+        <p>Find your dream job with ease!</p>
+    </div>
+    
+    <!-- Image -->
+    <div class="container mt-4">
+        <img src="{% static 'reasons_to_search_jobs_online.png' %}" alt="Reasons to search jobs online" class="img-fluid">
+    </div>
+    
+    <!-- Contact Info Section -->
+    <div class="contact-info">
+        <h2>Contact Us</h2>
+        <p>Email: itanisiddhant@gmail.com</p>
+        <p>Name: Siddhant Itani</p>
+        <p>Mobile No.: 9808110679</p>
+    </div>
+</div>
+{% endblock %}

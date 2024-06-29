@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Page title -->
+    <title>{% block title %}{% endblock %}</title>
+    
+    <!-- Custom CSS -->
+    <style>
+        .navbar {
+            background-color: #D0D3D4;
+        }
+        
+        .head1 {
+            color: #E74C3C;
+            font-size: 50px;
+            font-weight: bold;
+        }
+        
+        .head2 {
+            color: #E74C3C;
+            font-size: 35px;
+            font-weight: bold; 
+        }  
+    </style>
+    
+    <!-- Custom CSS Block (if needed) -->
+    {% block css %}
+    {% endblock %}
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark">
+        <a class="navbar-brand" href="/">
+            <span class="head1">JOB</span>
+            <span class="head2">CONNECT</span>
+        </a>
+        
+        <!-- Navigation Links -->
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Conditional Links Based on User Authentication -->
+                    {% if not request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link {% block home %}{% endblock %}" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% block user_login %}{% endblock %}" href="/user_login/">User Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% block admin_login %}{% endblock %}" href="/admin_login/">Admin Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% block company_login %}{% endblock %}" href="/company_login/">Company Login</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/logout/">Logout</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Bootstrap JavaScript (including Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Page Content -->
+    <div class="container">
+        {% block body %}
+        {% endblock %}
+    </div>
+    
+    <!-- Custom JavaScript Block (if needed) -->
+    {% block js %}
+    {% endblock %}
+</body>
+</html>
